@@ -3,24 +3,27 @@
 #include <conio.h>
 
 void Notice();
-int Add(double x, double y);
-int Sub(double x, double y);
-int Multi(double x, double y);
-int div(double x, double y);
-int square(double x, double y);
+double Add(double x, double y);
+double Sub(double x, double y);
+double Multi(double x, double y);
+double Div(double x, double y);
+double Square(double x, double y);
+double Sqrt(double x, double y);
 
 int main() {
 	char symbol;
 	double num1, num2, result;
+	int count=0;
 	Notice();
 	printf("숫자를 입력하세요\n");
 	scanf("%lf", &num1);
 	result = num1;
 	printf("\n기호를 입력하세요\n");
-	printf("+ : 더하기\n- : 빼기\n* : 곱하기\n/ : 나누기\n^ : 제곱\n");
+	printf("+ : 더하기 - : 빼기\n* : 곱하기\n/ : 나누기\n^ : 제곱\n");
 	while (1) {
 		scanf("%*c%c", &symbol);
-		printf("숫자를 입력하세요\n");
+		if (symbol == 'r')
+			result = sqrt(result, num2);
 		scanf("%lf", &num2);
 		if (symbol == '/' && num2 == 0) {
 			printf("0으로 나눌 수 없습니다");
@@ -37,37 +40,63 @@ int main() {
 				result = Multi(result, num2);
 				break;
 			case '/':
-				result = div(result, num2);
+				result = Div(result, num2);
 				break;
 			case '^':
-				result = square(result, num2);
+				result = Square(result, num2);
+				break;
+			defalut:
+				printf("기호를 잘 못 입력하셨습니다.\n");
 		}
-		printf("%lf\n", result);
-		printf("기호를 입력하세요\n");
+		printf("%.4lf\n", result);
+		count++;
 	}
 }
 
 void Notice() {
-	printf("숫자와 기호를 입력한 뒤 반드시 엔터를 쳐야 합니다.\n");
-	printf("나눗셈 기호 선택 후 다음 숫자가 0이면 오류가 납니다.\n\n");
+	int num;
+	printf("\n=============== 계산기 ===============\n\n");
+	printf("사용 방법을 보고 싶으시다면 1, 보고 싶지 않으시다면 0을 입력해주십시오.\n");
+	do {
+		scanf("%d", &num);
+		if (num == 1) {
+			printf("첫 숫자를 입력한 후 엔터를 눌러주십시오.\n");
+			printf("이후 나오는 기호와 숫자는 하나씩 연달아 입력 가능합니다.\n");
+			printf("입력 이후 엔터를 반드시 눌러주십시오.\n");
+			printf("나눗셈 기호 선택 후 다음 숫자가 0이면 오류가 납니다.\n\n");
+		}
+	} while (num != 0 && num != 1);
+	return;
 }
-int Add(double x, double y) {
+double Add(double x, double y) {
 	return x + y;
 }
-int Sub(double x, double y) {
+double Sub(double x, double y) {
 	return x - y;
 }
-int Multi(double x, double y) {
+double Multi(double x, double y) {
 	return x * y;
 }
-int div(double x, double y) {
+double Div(double x, double y) {
 	return x / y;
 }
-int square(double x, double y) {
+double Square(double x, double y) {
 	int i;
 	double num = 1;
 	for (i = 1; i <= y; i++) {
 		num = num * x;
 	}
 	return num;
+}
+double sqrt(double num) {
+	unsigned int NUM_REPEAT = 16;
+	unsigned int k;
+	double res;
+	double tmp = (double)num;
+	for (k = 0, res = tmp; k < NUM_REPEAT; k++) {
+		if (res < 1.0)
+			break;
+		res = (res * res + tmp) / (2.0 * res);
+	}
+	return res;
 }
