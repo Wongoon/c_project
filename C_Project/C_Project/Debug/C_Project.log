@@ -1,3 +1,4 @@
 ﻿  Project.c
-C:\Users\rmsgh\Documents\GitHub\c_project\C_Project\C_Project\Project.c(52,10): warning C4102: 'defalut': 참조되지 않은 레이블입니다.
-  C_Project.vcxproj -> C:\Users\rmsgh\Documents\GitHub\c_project\C_Project\Debug\C_Project.exe
+C:\Users\Fuser\Documents\GitHub\c_project\C_Project\C_Project\Project.c(52,10): warning C4102: 'defalut': 참조되지 않은 레이블입니다.
+  LINK : C:\Users\Fuser\Documents\GitHub\c_project\C_Project\Debug\C_Project.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  C_Project.vcxproj -> C:\Users\Fuser\Documents\GitHub\c_project\C_Project\Debug\C_Project.exe
