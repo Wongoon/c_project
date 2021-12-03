@@ -99,11 +99,10 @@ double Square(double x, double y) {
 	return num;
 }
 double Sqrt(double num) {
-	unsigned int NUM_REPEAT = 16;
-	unsigned int k;
+	int i;
 	double res;
-	double tmp = (double)num;
-	for (k = 0, res = tmp; k < NUM_REPEAT; k++) {
+	double tmp = num;
+	for (i = 0, res = tmp; i < 16; i++) {
 		if (res < 1.0)
 			break;
 		res = (res * res + tmp) / (2.0 * res);
